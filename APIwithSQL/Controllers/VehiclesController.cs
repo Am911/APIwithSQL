@@ -20,10 +20,47 @@ namespace APIwithSQL.Controllers
         }
 
         [HttpPost]
-        
+        [Route("Insert")]
         public async void createVehicleType([FromBody]VehicleType VT)
         {
             int result = await crud.Save(VT);
+        }
+
+        [HttpGet]
+        [Route("GetAllList")]
+        public IActionResult All()
+        {
+            List<VehicleType> ls = crud.GetAll();
+            return Ok(ls);
+        }
+
+        [HttpPut]
+        [Route("UpdatebyId")]
+        public IActionResult updateRecord(int id, [FromBody] VehicleType VT)
+        {
+            bool result = crud.updateRecord(id, VT);
+            if (result)
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+        [HttpDelete]
+        [Route("DeletebyId")]
+        public IActionResult deletebyId(int id)
+        {
+            bool result = crud.removeById(id);
+            if(result)
+            {
+                return Ok(1);
+            }
+            else
+            {
+                return NotFound();
+            }
         }
     }
 }
