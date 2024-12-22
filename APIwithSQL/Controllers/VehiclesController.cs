@@ -2,6 +2,7 @@
 using APIwithSQL.Models;
 using APIwithSQL.Services;
 using APIwithSQL.SQLContext;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,6 +10,7 @@ namespace APIwithSQL.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class VehiclesController : ControllerBase
     {
         private readonly IVehicleType crud;

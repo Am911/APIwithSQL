@@ -10,5 +10,6 @@ namespace APIwithSQL.SQLContext
         }
 
         public DbSet<VehicleType> TAT_VehicleType_Mst {  get; set; }
+        public DbSet<Authentication> TAT_Authentication_Mst {  get; set; }
     }
 }
